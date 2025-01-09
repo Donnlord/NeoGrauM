@@ -1,35 +1,16 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Social Retro</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Asegúrate de que tienes un archivo de estilos -->
 </head>
 <body>
-    <!-- Caja centralizada para Login y Registro -->
-    <div class="auth-box">
-        <h2>Bienvenido a la Red Social Retro</h2>
-        
-        <!-- Formulario de Login -->
-        <div class="auth-form" id="loginForm">
-            <h3>Iniciar sesión</h3>
-            <form action="/login" method="POST">
-                <input type="text" name="username" placeholder="Nombre de usuario" required>
-                <input type="password" name="password" placeholder="Contraseña" required>
-                <button type="submit">Entrar</button>
-            </form>
-        </div>
-
-        <!-- Formulario de Registro -->
-        <div class="auth-form" id="registerForm">
-            <h3>Registrarse</h3>
-            <form action="/register" method="POST">
-                <input type="text" name="username" placeholder="Nombre de usuario" required>
-                <input type="password" name="password" placeholder="Contraseña" required>
-                <button type="submit">Crear cuenta</button>
-            </form>
+    <div class="auth-container">
+        <div class="auth-box">
+            <button onclick="window.location.href='/register'">Registrarse</button>
+            <button onclick="window.location.href='/login'">Iniciar sesión</button>
         </div>
     </div>
 </body>
