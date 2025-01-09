@@ -22,5 +22,31 @@
             <button type="submit">Iniciar Sesión</button>
         </form>
     </div>
+<!-- Feed -->
+<div class="navbar">
+    <a href="/feed">Feed</a>
+    <a href="/profile">Perfil</a>
+    <a href="/logout">Cerrar sesión</a>
+</div>
+
+<div class="content">
+    <div id="feed" class="feed">
+        <h2>Feed</h2>
+        <form id="postForm">
+            <input type="text" id="postContent" placeholder="Escribe algo..." required>
+            <button type="submit">Publicar</button>
+        </form>
+        <div id="postsContainer"></div>
+    </div>
+
+    <div id="profile" class="profile">
+        <h2>Tu Perfil</h2>
+        <form id="profileForm">
+            <input type="text" id="username" placeholder="Nombre de usuario" value="TuNombre" disabled>
+            <textarea id="bio" placeholder="Biografía"></textarea>
+            <button type="submit">Actualizar Perfil</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
