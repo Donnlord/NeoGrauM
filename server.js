@@ -8,12 +8,21 @@ app.set('view engine', 'ejs');
 
 // Datos temporales
 let users = [];
-let posts = [];
 let currentUser = null;
 
 // Página de inicio (Login y Registro)
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
+});
+
+// Página de login
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/login.html');
+});
+
+// Página de registro
+app.get('/register', (req, res) => {
+    res.sendFile(__dirname + '/register.html');
 });
 
 // Procesar el Login
@@ -36,6 +45,15 @@ app.post('/register', (req, res) => {
     users.push({ username, password, bio: '', posts: [] });
     currentUser = { username, bio: '', posts: [] };
     res.redirect('/confirm'); // Redirigir a la página de confirmación después de registrarse
+});
+
+// Página de confirmación (registro exitoso)
+app.get('/confirm', (req, res) => {
+    res.send(`
+        <h2>¡Cuenta creada exitosamente!</h2>
+        <p>Tu cuenta ha sido registrada correctamente. Ahora puedes iniciar sesión.</p>
+        <a href="/">Volver al inicio</a>
+    `);
 });
 
 // Feed
