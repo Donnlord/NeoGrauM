@@ -64,5 +64,37 @@
             }
         });
     </script>
+    <script>
+    // Verificamos si el usuario está logueado
+    window.onload = function() {
+        let isLoggedIn = localStorage.getItem("userLoggedIn");
+        
+        // Elementos de la barra de navegación
+        let loginLink = document.getElementById("login-link");
+        let registerLink = document.getElementById("register-link");
+        let homeLink = document.getElementById("home-link");
+        let profileLink = document.getElementById("profile-link");
+        let searchLink = document.getElementById("search-link");
+        let logoutLink = document.getElementById("logout-link");
+
+        if (isLoggedIn === "true") {
+            // Si está logueado, mostrar opciones de inicio, perfil, buscar y cerrar sesión
+            loginLink.style.display = "none";
+            registerLink.style.display = "none";
+            homeLink.style.display = "inline";
+            profileLink.style.display = "inline";
+            searchLink.style.display = "inline";
+            logoutLink.style.display = "inline";
+        } else {
+            // Si no está logueado, mostrar opciones de login y registro
+            loginLink.style.display = "inline";
+            registerLink.style.display = "inline";
+            homeLink.style.display = "none";
+            profileLink.style.display = "none";
+            searchLink.style.display = "none";
+            logoutLink.style.display = "none";
+        }
+    };
+</script>
 </body>
 </html>
