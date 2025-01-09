@@ -11,11 +11,6 @@ let users = [];
 let posts = [];
 let currentUser = null;
 
-// Página de inicio (Login y Registro)
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
 // Procesar el Login
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
