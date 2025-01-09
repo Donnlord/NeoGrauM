@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil - NeoGrauM</title>
+    <title>Buscar - NeoGrauM</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Tu Perfil</h1>
-        <nav id="nav-profile">
-            <a href="index.html">Inicio</a>
-            <a href="profile.html">Perfil</a>
-            <a href="search.html">Buscar</a>
-            <a href="login.html">Cerrar sesión</a>
+        <h1>Buscar</h1>
+        <nav id="nav-bar">
+            <a href="index.html" id="home-btn">Inicio</a>
+            <a href="profile.html" id="profile-btn">Perfil</a>
+            <a href="search.html" id="search-btn">Buscar</a>
+            <a href="register.html" id="register-btn">Registrarse</a>
+            <a href="login.html" id="login-btn">Iniciar sesión</a>
+            <a href="login.html" id="logout-btn" style="display: none;">Cerrar sesión</a>
         </nav>
     </header>
     <main>
-        <section id="profile-info">
-            <h2>Información del Perfil</h2>
-            <p><strong>Nombre de Usuario:</strong> <span id="user-name"></span></p>
-            <p><strong>Correo Electrónico:</strong> <span id="user-email"></span></p>
-            <button id="edit-profile">Editar Perfil</button>
+        <section id="search-section">
+            <h2>Encuentra a otros usuarios</h2>
+            <input type="text" id="search-input" placeholder="Busca usuarios por nombre">
+            <button id="search-button">Buscar</button>
+            <div id="search-results">
+                <!-- Aquí aparecerán los resultados de búsqueda -->
+            </div>
         </section>
     </main>
     <footer>
@@ -29,16 +33,59 @@
     </footer>
 
     <script>
-        // Comprobamos si el usuario está logueado
-        if (!localStorage.getItem("userLoggedIn")) {
-            window.location.href = "login.html";  // Redirige si no hay sesión iniciada
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            const isLoggedIn = localStorage.getItem("userLoggedIn");
+            const registerBtn = document.querySelector("#register-btn");
+            const loginBtn = document.querySelector("#login-btn");
+            const logoutBtn = document.querySelector("#logout-btn");
+            const profileBtn = document.querySelector("#profile-btn");
+            const searchBtn = document.querySelector("#search-btn");
 
-        document.getElementById('user-name').innerText = localStorage.getItem("userName") || "Usuario Anónimo";
-        document.getElementById('user-email').innerText = localStorage.getItem("userEmail") || "No registrado";
-        
-        document.getElementById('edit-profile').addEventListener('click', function() {
-            alert("Función de edición aún no implementada.");
+            if (isLoggedIn) {
+                // Ocultar opciones de registro e inicio de sesión
+                if (registerBtn) registerBtn.style.display = "none";
+                if (loginBtn) loginBtn.style.display = "none";
+
+                // Mostrar opciones de cerrar sesión, perfil y búsqueda
+                if (logoutBtn) logoutBtn.style.display = "block";
+                if (profileBtn) profileBtn.style.display = "block";
+                if (searchBtn) searchBtn.style.display = "block";
+            } else {
+                // Mostrar opciones de registro e inicio de sesión
+                if (registerBtn) registerBtn.style.display = "block";
+                if (loginBtn) loginBtn.style.display = "block";
+
+                // Ocultar opciones de cerrar sesión, perfil y búsqueda
+                if (logoutBtn) logoutBtn.style.display = "none";
+                if (profileBtn) profileBtn.style.display = "none";
+                if (searchBtn) searchBtn.style.display = "none";
+
+                // Redirigir al login si no hay sesión iniciada
+                window.location.href = "login.html";
+            }
+
+            // Funcionalidad básica de búsqueda
+            const searchInput = document.querySelector("#search-input");
+            const searchButton = document.querySelector("#search-button");
+            const searchResults = document.querySelector("#search-results");
+
+            searchButton.addEventListener("click", () => {
+                const query = searchInput.value.trim();
+                if (query === "") {
+                    searchResults.innerHTML = "<p>Por favor, ingresa un término de búsqueda.</p>";
+                    return;
+                }
+
+                // Simulación de resultados de búsqueda
+                searchResults.innerHTML = `
+                    <p>Resultados para "<strong>${query}</strong>":</p>
+                    <ul>
+                        <li>Usuario1</li>
+                        <li>Usuario2</li>
+                        <li>Usuario3</li>
+                    </ul>
+                `;
+            });
         });
     </script>
 </body>
