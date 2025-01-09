@@ -8,6 +8,20 @@
 </head>
 <body>
     <header>
+    <h1>NeoGrauM</h1>
+    <nav id="nav">
+        <!-- Solo se muestran si no estás logueado -->
+        <a href="login.html" id="login-link">Iniciar sesión</a>
+        <a href="register.html" id="register-link">Registrarse</a>
+
+        <!-- Solo se muestran si estás logueado -->
+        <a href="index.html" id="home-link" style="display:none;">Inicio</a>
+        <a href="profile.html" id="profile-link" style="display:none;">Perfil</a>
+        <a href="search.html" id="search-link" style="display:none;">Buscar</a>
+        <a href="#" id="logout-link" style="display:none;">Cerrar sesión</a>
+    </nav>
+</header>
+    <header>
         <h1>Registrarse</h1>
         <nav id="nav-register">
             <a href="login.html">Iniciar sesión</a>
