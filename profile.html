@@ -73,5 +73,20 @@
         }
     };
 </script>
+    <script>
+    // Funcionalidad para cerrar sesión
+    document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        // Eliminar los datos de sesión
+        localStorage.removeItem("userLoggedIn");
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem("userPassword");
+        localStorage.removeItem("userName");
+
+        // Redirigir a la página de inicio de sesión
+        window.location.href = "login.html";
+    });
+</script>
 </body>
 </html>
