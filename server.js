@@ -11,8 +11,18 @@ let users = [];
 let posts = [];
 let currentUser = null;
 
-// Página de inicio
+// Página de inicio (Login y Registro)
 app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+// Página de Login
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+// Página de Registro
+app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
@@ -23,7 +33,7 @@ app.post('/register', (req, res) => {
         return res.send('El usuario ya existe');
     }
     users.push({ username, password, bio: '', posts: [] });
-    currentUser = { username, bio: '', posts: [] }; // Simulamos que el usuario está logueado
+    currentUser = { username, bio: '', posts: [] };
     res.redirect('/feed');
 });
 
@@ -40,11 +50,17 @@ app.post('/login', (req, res) => {
 
 // Feed
 app.get('/feed', (req, res) => {
-    res.render('feed', { posts });
+    if (!currentUser) {
+        return res.redirect('/login');
+    }
+    res.sendFile(__dirname + '/feed.html');
 });
 
 // Crear publicación
 app.post('/post', (req, res) => {
+    if (!currentUser) {
+        return res.redirect('/login');
+    }
     const content = req.body.content;
     const newPost = { username: currentUser.username, content, date: new Date() };
     posts.push(newPost);
@@ -53,11 +69,17 @@ app.post('/post', (req, res) => {
 
 // Perfil
 app.get('/profile', (req, res) => {
-    res.render('profile', { user: currentUser });
+    if (!currentUser) {
+        return res.redirect('/login');
+    }
+    res.sendFile(__dirname + '/profile.html');
 });
 
 // Actualizar perfil
 app.post('/updateProfile', (req, res) => {
+    if (!currentUser) {
+        return res.redirect('/login');
+    }
     const { bio } = req.body;
     currentUser.bio = bio;
     res.redirect('/profile');
