@@ -36,8 +36,12 @@
             let email = document.getElementById("email").value;
             let password = document.getElementById("password").value;
 
-            // Simulación de validación
-            if (email === "juan123@correo.com" && password === "password123") {
+            // Recuperamos las credenciales registradas
+            let storedEmail = localStorage.getItem("userEmail");
+            let storedPassword = localStorage.getItem("userPassword");
+
+            // Verificamos si las credenciales coinciden
+            if (email === storedEmail && password === storedPassword) {
                 localStorage.setItem("userLoggedIn", "true");
                 window.location.href = "index.html";  // Redirige al feed
             } else {
@@ -47,4 +51,3 @@
     </script>
 </body>
 </html>
-
