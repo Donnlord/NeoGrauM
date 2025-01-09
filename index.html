@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,12 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navbar">
-        <a href="/login">Iniciar sesión</a> |
-        <a href="/register">Registrarse</a>
-    </div>
+    <!-- Eliminar la barra de navegación duplicada, porque los formularios ya contienen las opciones -->
 
-    <!-- Login -->
+    <!-- Sección de Login -->
     <div id="loginForm" class="auth-form">
         <h2>Iniciar sesión</h2>
         <form action="/login" method="POST">
@@ -22,7 +20,7 @@
         </form>
     </div>
 
-    <!-- Registro -->
+    <!-- Sección de Registro -->
     <div id="registerForm" class="auth-form">
         <h2>Registrarse</h2>
         <form action="/register" method="POST">
