@@ -35,7 +35,7 @@ app.post('/register', (req, res) => {
     }
     users.push({ username, password, bio: '', posts: [] });
     currentUser = { username, bio: '', posts: [] };
-    res.redirect('/feed'); // Redirigir al feed después de registrarse
+    res.redirect('/confirm'); // Redirigir a la página de confirmación después de registrarse
 });
 
 // Feed
