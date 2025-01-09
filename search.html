@@ -3,29 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar - NeoGrauM</title>
+    <title>Perfil - NeoGrauM</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Buscar en NeoGrauM</h1>
-        <nav>
+        <h1>Tu Perfil</h1>
+        <nav id="nav-profile">
             <a href="index.html">Inicio</a>
             <a href="profile.html">Perfil</a>
             <a href="search.html">Buscar</a>
-            <a href="register.html">Registrarse</a>
-            <a href="login.html">Iniciar sesión</a>
+            <a href="login.html">Cerrar sesión</a>
         </nav>
     </header>
     <main>
-        <section id="search">
-            <h2>Busca usuarios o publicaciones</h2>
-            <input type="text" id="search-bar" placeholder="Buscar...">
-            <button>Buscar</button>
+        <section id="profile-info">
+            <h2>Información del Perfil</h2>
+            <p><strong>Nombre de Usuario:</strong> <span id="user-name"></span></p>
+            <p><strong>Correo Electrónico:</strong> <span id="user-email"></span></p>
+            <button id="edit-profile">Editar Perfil</button>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 NeoGrauM</p>
     </footer>
+
+    <script>
+        // Comprobamos si el usuario está logueado
+        if (!localStorage.getItem("userLoggedIn")) {
+            window.location.href = "login.html";  // Redirige si no hay sesión iniciada
+        }
+
+        document.getElementById('user-name').innerText = localStorage.getItem("userName") || "Usuario Anónimo";
+        document.getElementById('user-email').innerText = localStorage.getItem("userEmail") || "No registrado";
+        
+        document.getElementById('edit-profile').addEventListener('click', function() {
+            alert("Función de edición aún no implementada.");
+        });
+    </script>
 </body>
 </html>
