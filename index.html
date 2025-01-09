@@ -10,11 +10,11 @@
     <header>
         <h1>Bienvenidos a NeoGrauM</h1>
         <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Perfil</a>
-            <a href="#">Buscar</a>
-            <a href="#">Registrarse</a>
-            <a href="#">Iniciar sesión</a>
+            <a href="index.html">Inicio</a>
+            <a href="profile.html">Perfil</a>
+            <a href="search.html">Buscar</a>
+            <a href="register.html">Registrarse</a>
+            <a href="login.html">Iniciar sesión</a>
         </nav>
     </header>
     <main>
@@ -26,5 +26,12 @@
     <footer>
         <p>&copy; 2025 NeoGrauM</p>
     </footer>
+
+    <script>
+        // Simular si el usuario está logueado usando localStorage
+        if (!localStorage.getItem("userLoggedIn")) {
+            window.location.href = "login.html";  // Redirige si no está autenticado
+        }
+    </script>
 </body>
 </html>
