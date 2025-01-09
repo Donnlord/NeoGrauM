@@ -39,9 +39,10 @@
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
 
-            // Simulación de registro (sin backend real)
+            // Guardamos los datos de usuario en localStorage
             localStorage.setItem("userLoggedIn", "true");
             localStorage.setItem("userEmail", email);
+            localStorage.setItem("userPassword", password);
             localStorage.setItem("userName", username);
 
             alert("Registro exitoso.");
