@@ -17,27 +17,6 @@ app.get('/', (req, res) => {
 });
 
 // Página de Login
-app.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
-// Página de Registro
-app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
-// Registro
-app.post('/register', (req, res) => {
-    const { username, password } = req.body;
-    if (users.find(user => user.username === username)) {
-        return res.send('El usuario ya existe');
-    }
-    users.push({ username, password, bio: '', posts: [] });
-    currentUser = { username, bio: '', posts: [] };
-    res.redirect('/feed');
-});
-
-// Inicio de sesión
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const user = users.find(user => user.username === username && user.password === password);
@@ -45,44 +24,34 @@ app.post('/login', (req, res) => {
         return res.send('Usuario o contraseña incorrectos');
     }
     currentUser = user;
-    res.redirect('/feed');
+    res.redirect('/feed'); // Redirigir al feed después de iniciar sesión correctamente
+});
+
+// Página de Registro
+app.post('/register', (req, res) => {
+    const { username, password } = req.body;
+    if (users.find(user => user.username === username)) {
+        return res.send('El usuario ya existe');
+    }
+    users.push({ username, password, bio: '', posts: [] });
+    currentUser = { username, bio: '', posts: [] };
+    res.redirect('/feed'); // Redirigir al feed después de registrarse
 });
 
 // Feed
 app.get('/feed', (req, res) => {
     if (!currentUser) {
-        return res.redirect('/login');
+        return res.redirect('/');
     }
-    res.sendFile(__dirname + '/feed.html');
-});
-
-// Crear publicación
-app.post('/post', (req, res) => {
-    if (!currentUser) {
-        return res.redirect('/login');
-    }
-    const content = req.body.content;
-    const newPost = { username: currentUser.username, content, date: new Date() };
-    posts.push(newPost);
-    res.redirect('/feed');
+    res.sendFile(__dirname + '/feed.html'); // Página del feed
 });
 
 // Perfil
 app.get('/profile', (req, res) => {
     if (!currentUser) {
-        return res.redirect('/login');
+        return res.redirect('/');
     }
-    res.sendFile(__dirname + '/profile.html');
-});
-
-// Actualizar perfil
-app.post('/updateProfile', (req, res) => {
-    if (!currentUser) {
-        return res.redirect('/login');
-    }
-    const { bio } = req.body;
-    currentUser.bio = bio;
-    res.redirect('/profile');
+    res.sendFile(__dirname + '/profile.html'); // Página del perfil
 });
 
 // Cerrar sesión
@@ -91,4 +60,5 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
+// Iniciar servidor
 app.listen(3000, () => console.log('Servidor ejecutándose en http://localhost:3000'));
