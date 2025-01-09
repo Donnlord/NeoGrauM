@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-// Página de Login
+// Procesar el Login
 app.post('/login', (req, res) => {
     const { username, password } = req.body;
     const user = users.find(user => user.username === username && user.password === password);
@@ -24,10 +24,10 @@ app.post('/login', (req, res) => {
         return res.send('Usuario o contraseña incorrectos');
     }
     currentUser = user;
-    res.redirect('/feed'); // Redirigir al feed después de iniciar sesión correctamente
+    res.redirect('/feed'); // Redirigir al feed después de iniciar sesión
 });
 
-// Página de Registro
+// Procesar el Registro
 app.post('/register', (req, res) => {
     const { username, password } = req.body;
     if (users.find(user => user.username === username)) {
@@ -44,14 +44,6 @@ app.get('/feed', (req, res) => {
         return res.redirect('/');
     }
     res.sendFile(__dirname + '/feed.html'); // Página del feed
-});
-
-// Perfil
-app.get('/profile', (req, res) => {
-    if (!currentUser) {
-        return res.redirect('/');
-    }
-    res.sendFile(__dirname + '/profile.html'); // Página del perfil
 });
 
 // Cerrar sesión
