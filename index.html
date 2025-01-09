@@ -4,28 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Social</title>
+    <title>Red Social Retro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Formulario de Login -->
-    <div id="loginForm" class="auth-form">
-        <h2>Iniciar sesión</h2>
-        <form action="/login" method="POST">
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Entrar</button>
-        </form>
-    </div>
+    <!-- Caja centralizada para Login y Registro -->
+    <div class="auth-box">
+        <h2>Bienvenido a la Red Social Retro</h2>
+        
+        <!-- Formulario de Login -->
+        <div class="auth-form" id="loginForm">
+            <h3>Iniciar sesión</h3>
+            <form action="/login" method="POST">
+                <input type="text" name="username" placeholder="Nombre de usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
 
-    <!-- Formulario de Registro -->
-    <div id="registerForm" class="auth-form">
-        <h2>Registrarse</h2>
-        <form action="/register" method="POST">
-            <input type="text" name="username" placeholder="Nombre de usuario" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit">Crear cuenta</button>
-        </form>
+        <!-- Formulario de Registro -->
+        <div class="auth-form" id="registerForm">
+            <h3>Registrarse</h3>
+            <form action="/register" method="POST">
+                <input type="text" name="username" placeholder="Nombre de usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Crear cuenta</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
