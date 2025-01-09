@@ -1,64 +1,53 @@
+/* style.css */
 body {
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    margin: 0;
-}
-
-.navbar {
-    background-color: #ff6f61;
-    width: 100%;
-    padding: 10px;
+    background-color: #ffcc99; /* Naranja suave */
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
 }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 20px;
-    font-weight: bold;
-}
-
-.content {
-    width: 80%;
-    max-width: 800px;
-    padding: 20px;
-}
-
-.feed, .profile {
-    background: white;
+.auth-box {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    width: 300px;
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+}
+
+.auth-form {
     margin-bottom: 20px;
 }
 
-h2 {
-    color: #ff6f61;
-}
-
-input, textarea {
+.auth-form input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ddd;
+    border: 1px solid #000;
     border-radius: 5px;
 }
 
-button {
-    background-color: #ff6f61;
+.auth-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff66cc; /* Rosa */
     color: white;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-button:hover {
-    background-color: #ff856e;
+.auth-form button:hover {
+    background-color: #ff3399;
 }
 
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
