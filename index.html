@@ -26,12 +26,37 @@
     <footer>
         <p>&copy; 2025 NeoGrauM</p>
     </footer>
-
     <script>
         // Simular si el usuario está logueado usando localStorage
         if (!localStorage.getItem("userLoggedIn")) {
             window.location.href = "login.html";  // Redirige si no está autenticado
         }
+    </script>
+document.addEventListener("DOMContentLoaded", () => {
+    const isLoggedIn = localStorage.getItem("loggedInUser");
+    const registerBtn = document.querySelector("#register-btn");
+    const loginBtn = document.querySelector("#login-btn");
+    const profileBtn = document.querySelector("#profile-btn");
+    const searchBtn = document.querySelector("#search-btn");
+
+    if (isLoggedIn) {
+        // Ocultar opciones de registro e inicio de sesión
+        if (registerBtn) registerBtn.style.display = "none";
+        if (loginBtn) loginBtn.style.display = "none";
+
+        // Mostrar opciones del perfil y búsqueda
+        if (profileBtn) profileBtn.style.display = "block";
+        if (searchBtn) searchBtn.style.display = "block";
+    } else {
+        // Mostrar opciones de registro e inicio de sesión si no estás autenticado
+        if (registerBtn) registerBtn.style.display = "block";
+        if (loginBtn) loginBtn.style.display = "block";
+
+        // Ocultar perfil y búsqueda
+        if (profileBtn) profileBtn.style.display = "none";
+        if (searchBtn) searchBtn.style.display = "none";
+    }
+});
     </script>
 </body>
 </html>
