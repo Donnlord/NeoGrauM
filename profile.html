@@ -9,24 +9,37 @@
 <body>
     <header>
         <h1>Tu Perfil</h1>
-        <nav>
+        <nav id="nav-profile">
             <a href="index.html">Inicio</a>
             <a href="profile.html">Perfil</a>
             <a href="search.html">Buscar</a>
-            <a href="register.html">Registrarse</a>
-            <a href="login.html">Iniciar sesión</a>
+            <a href="login.html">Cerrar sesión</a>
         </nav>
     </header>
     <main>
         <section id="profile-info">
             <h2>Información del Perfil</h2>
-            <p><strong>Nombre de Usuario:</strong> Juan123</p>
-            <p><strong>Correo Electrónico:</strong> juan123@correo.com</p>
-            <button>Editar Perfil</button>
+            <p><strong>Nombre de Usuario:</strong> <span id="user-name"></span></p>
+            <p><strong>Correo Electrónico:</strong> <span id="user-email"></span></p>
+            <button id="edit-profile">Editar Perfil</button>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 NeoGrauM</p>
     </footer>
+
+    <script>
+        // Comprobamos si el usuario está logueado
+        if (!localStorage.getItem("userLoggedIn")) {
+            window.location.href = "login.html";  // Redirige si no hay sesión iniciada
+        }
+
+        document.getElementById('user-name').innerText = localStorage.getItem("userName") || "Usuario Anónimo";
+        document.getElementById('user-email').innerText = localStorage.getItem("userEmail") || "No registrado";
+        
+        document.getElementById('edit-profile').addEventListener('click', function() {
+            alert("Función de edición aún no implementada.");
+        });
+    </script>
 </body>
 </html>
